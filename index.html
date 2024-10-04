@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="firstpage.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <h1>Fakhri Hajiyev</h1>
+    </div>
+    <div class="first-page">
+        <video loop muted autoplay src="videos/video 1.mp4"></video>
+        <div class="video-content">enter</div>
+    </div>
+
+    <script>
+        let enter=document.querySelector('.video-content');
+
+  
+        enter.addEventListener('click', () => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.open('home.html', "_self");
+            }, 1000); 
+        });
+
+    </script>
+</body>
+</html>

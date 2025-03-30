@@ -1,4 +1,4 @@
-// Resim dizisi (büyük resimler ve thumbnail'ler için kullanılacak)
+
 const imageSources = [
     '2.jpeg',
     '1.jpeg',
@@ -21,10 +21,10 @@ fullPicPage.style.display='none';
 const fullPicPage=document.querySelector('#fullPic');
 const fullPic = document.getElementById('fullPic').querySelector('img');
 
-// Tüm küçük resimleri dinamik oluşturmak için dizide tutuyoruz
+
 const images = document.querySelectorAll('.dov img');
 
-// Her bir küçük resim için tıklama olayı ekleyelim
+
 images.forEach(image => {
     image.addEventListener('click', () => {
         const clickedImageSrc = image.src; // Tıklanan resmin src'sini al
@@ -32,7 +32,7 @@ images.forEach(image => {
     });
 });
 
-// Ana resimler ve thumbnail'ler için elementler
+
 const imageContainer = document.getElementById('imageContainer');
 const thumbnailsContainer = document.getElementById('thumbnailsContainer');
 
@@ -40,7 +40,7 @@ let currentIndex = 0; // Başlangıçta gösterilecek resim indeksi
 let startThumbnailIndex = 0;
 let endThumbnailIndex = 3; // İlk başta 3 thumbnail göstereceğiz
 
-// Büyük resimleri dinamik olarak oluştur
+
 function createMainImages() {
     imageContainer.innerHTML = ''; // Eski resimleri temizle
 
@@ -60,7 +60,7 @@ function createMainImages() {
     });
 }
 
-// Thumbnail'leri dinamik olarak oluştur
+
 function createThumbnails() {
     thumbnailsContainer.innerHTML = ''; // Eski thumbnail'leri temizle
 
@@ -79,16 +79,14 @@ function createThumbnails() {
 
         thumbnailsContainer.appendChild(thumbnail);
     }
-    updateThumbnails(); // Başlangıçta aktif thumbnail'i belirle
+    updateThumbnails(); 
 }
 
-// Scroll olayını dinle, kaydırma pozisyonuna göre thumbnail'leri güncelle
 imageContainer.addEventListener('scroll', function () {
     const scrollPosition = imageContainer.scrollLeft;
     const imageWidth = imageContainer.clientWidth;
     currentIndex = Math.round(scrollPosition / imageWidth); // Şu anki gösterilen resmi bul
 
-    // Eğer currentIndex 3'ün katına ulaştıysa, bir sonraki thumbnail grubunu göster
     if (currentIndex >= endThumbnailIndex) {
         startThumbnailIndex = currentIndex;
         endThumbnailIndex = startThumbnailIndex + 3;
@@ -98,14 +96,13 @@ imageContainer.addEventListener('scroll', function () {
         createThumbnails(); // Yeni thumbnail'leri oluştur
     }
 
-    // Eğer kaydırma geri gidiyorsa, önceki 3 thumbnail'i göster
     if (currentIndex < startThumbnailIndex) {
         startThumbnailIndex = currentIndex - (currentIndex % 3);
         endThumbnailIndex = startThumbnailIndex + 3;
         createThumbnails();
     }
 
-    updateThumbnails(); // Aktif olan thumbnail'i güncelle
+    updateThumbnails(); 
 });
 
 function scrollToCurrentImage() {
@@ -125,7 +122,7 @@ function updateSlider() {
         }
     });
 
-    updateThumbnails(); // Thumbnail'leri güncelle
+    updateThumbnails(); 
 }
 
 // Thumbnail'leri aktif olup olmadığını güncelleyen fonksiyon
@@ -140,6 +137,5 @@ function updateThumbnails() {
     });
 }
 
-// İlk başta resim ve thumbnail'leri oluştur
 createMainImages();
 createThumbnails();
